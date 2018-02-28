@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/track18-spring.iml" filepath="$PROJECT_DIR$/.idea/track18-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L1-intro/L1.iml" filepath="$PROJECT_DIR$/L1-intro/L1.iml" />
     </modules>
   </component>
 </project>
