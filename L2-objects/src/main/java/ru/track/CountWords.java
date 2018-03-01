@@ -1,6 +1,10 @@
 package ru.track;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 
 
 /**
@@ -31,6 +35,11 @@ public class CountWords {
     public CountWords(String skipWord) {
         this.skipWord = skipWord;
     }
+    public static void main(String[] args) throws Exception {
+        CountWords cw = new CountWords( "");
+        File src = new File( "/Users/en0s/Desktop/java/track18-spring/L2-objects/words.txt");
+        System.out.println(cw.concatWords(src));
+    }
 
     /**
      * Метод на вход принимает объект File, изначально сумма = 0
@@ -40,7 +49,20 @@ public class CountWords {
      * @return - целое число - сумма всех чисел из файла
      */
     public long countNumbers(File file) throws Exception {
-        return 0;
+        FileReader fileReader1 = new FileReader(file);
+        BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+        String line;
+        long res = 0;
+        while (true) {
+            line = bufferedReader1.readLine();
+            if (line == null) {
+                break;
+            } else if (StringUtils.isNumeric(line)) {
+                res += Integer.parseInt(line);
+            }
+        }
+
+        return res;
     }
 
 
@@ -52,7 +74,20 @@ public class CountWords {
      * @return - результирующая строка
      */
     public String concatWords(File file) throws Exception {
-        return null;
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line;
+        StringBuilder builderResult = new StringBuilder();
+        while (true) {
+            line = bufferedReader.readLine();
+            if (line == null) {
+                break;
+            } else if (!StringUtils.isNumericSpace(line) && !line.equals(skipWord)) {
+                builderResult.append(line);
+                builderResult.append(" ");
+            }
+        }
+        return builderResult.toString();
     }
 
 }
